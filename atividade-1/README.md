@@ -1,5 +1,5 @@
 # atividade-1
 
-Threads
+Exercício de Thread
 
 Tutorial de Loiane Groner
