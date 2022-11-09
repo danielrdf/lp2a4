@@ -1,5 +1,5 @@
 
-public class MinhaThread implements Runnable {
+public class MinhaThread implements Runnable { 
 
 	private String nome;
 	private int tempo;
@@ -17,7 +17,8 @@ public class MinhaThread implements Runnable {
 				System.out.println(nome + " passo " + i);
 				Thread.sleep(tempo);
 			}
-		} catch (InterruptedException e) {
+		} 
+		catch (InterruptedException e) {
 			e.printStackTrace();
 		}
 		System.out.println(nome + " terminou a execução");
