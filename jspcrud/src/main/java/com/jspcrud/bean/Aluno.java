@@ -1,6 +1,6 @@
 package com.jspcrud.bean;
 
-public class AlunoPojo {
+public class Aluno { 
 	
 	private int matricula;
 	private String nome;

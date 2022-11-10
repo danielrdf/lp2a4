@@ -13,9 +13,9 @@
 	<h1>Listagem de usuários</h1>
 	
 	<%
-	List<AlunoPojo> list = AlunoDao.getAllAlunos();
-	request.setAttribute("list", list);
-	%>
+		List<Aluno> list = AlunoDao.getAllAlunos();
+			request.setAttribute("list", list);
+		%>
 	
 	<table border="1">
 		<tr>
