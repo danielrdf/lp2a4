@@ -2,37 +2,27 @@ package com.jspcrud.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.jspcrud.bean.Aluno;
+import com.mysql.jdbc.PreparedStatement;
 
 public class AlunoDao {
-
-	// método para conectar ao BD
-	public static Connection getConnection() {
-		Connection con = null;
-
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/jspcrud", "root", "12345678");
-		} 
-		catch (Exception e) {
-			System.out.println(e);
-		}
-		return con;
-	}
-
+	
 	// método para listar todos os alunos
 	public static List<Aluno> getAllAlunos() {
-		List<Aluno> list = new ArrayList<Aluno>();
+		Connection conn = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		List<Aluno> list = new ArrayList<>();
 
 		try {
-			Connection con = getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT * FROM aluno");
-			ResultSet rs = ps.executeQuery();
+			conn = DB.getConnection();
+			ps = (PreparedStatement) conn.prepareStatement("SELECT * FROM aluno");
+			rs = ps.executeQuery();
 
 			while (rs.next()) {
 				Aluno aluno = new Aluno();

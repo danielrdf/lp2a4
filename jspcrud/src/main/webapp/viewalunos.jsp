@@ -8,14 +8,14 @@
 </head>
 <body>
 	<%@ page import="com.jspcrud.dao.AlunoDao, com.jspcrud.bean.*, java.util.*"%>
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 	
 	<h1>Listagem de usuários</h1>
 	
 	<%
 		List<Aluno> list = AlunoDao.getAllAlunos();
-			request.setAttribute("list", list);
-		%>
+		request.setAttribute("list", list);
+	%>
 	
 	<table border="1">
 		<tr>
@@ -28,8 +28,6 @@
 				<td>${aluno.getMatricula()}</td>
 				<td>${aluno.getNome()}</td>
 				<td>${aluno.getEndereco()}</td>
-				<%-- <td><a href="editform.jsp?id=${usuario.getId()}">Editar</a></td>
-				<td><a href="deleteusuario.jsp?id=${usuario.getId()}">Excluir</a></td> --%>
 			</tr>
 		</c:forEach>
 	</table>
