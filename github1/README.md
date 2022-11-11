@@ -1,4 +1,4 @@
-# atividade-1
+# github-1
 
 Exercício de Thread
 
