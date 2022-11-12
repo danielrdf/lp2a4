@@ -52,16 +52,8 @@ public class AlunoDaoJDBC implements AlunoDao {
 			st.setInt(1, id);
 			rs = st.executeQuery();
 			if (rs.next()) {
-				Curso curso = new Curso();
-				curso.setId(rs.getInt("idCurso"));
-				curso.setNome(rs.getString("Curso"));
-				Aluno aluno = new Aluno();
-				aluno.setId(rs.getInt("id"));
-				aluno.setNome(rs.getString("nome"));
-				aluno.setEmail(rs.getString("email"));
-				aluno.setDataIngresso(rs.getDate("dataIngresso"));
-				aluno.setDataConclusao(rs.getDate("dataConclusao"));
-				aluno.setCurso(curso);
+				Curso curso = instantiateCurso(rs);
+				Aluno aluno = instantiateAluno(rs, curso);
 				return aluno;
 			}
 			return null;
@@ -73,6 +65,24 @@ public class AlunoDaoJDBC implements AlunoDao {
 			DB.closeStatement(st);
 			DB.closeResultSet(rs);
 		}
+	}
+
+	private Aluno instantiateAluno(ResultSet rs, Curso curso) throws SQLException {
+		Aluno aluno = new Aluno();
+		aluno.setId(rs.getInt("id"));
+		aluno.setNome(rs.getString("nome"));
+		aluno.setEmail(rs.getString("email"));
+		aluno.setDataIngresso(rs.getDate("dataIngresso"));
+		aluno.setDataConclusao(rs.getDate("dataConclusao"));
+		aluno.setCurso(curso);
+		return aluno;
+	}
+
+	private Curso instantiateCurso(ResultSet rs) throws SQLException {
+		Curso curso = new Curso();
+		curso.setId(rs.getInt("idCurso"));
+		curso.setNome(rs.getString("Curso"));
+		return curso;
 	}
 
 	@Override
