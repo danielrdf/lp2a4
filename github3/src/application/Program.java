@@ -35,6 +35,12 @@ public class Program {
 		Aluno novoAluno = new Aluno(null, "Greg", "greg@gmail.com", new Date(), new Date(), curso);
 		alunoDao.insert(novoAluno);
 		System.out.println("Inserted! New id = " + novoAluno.getId());
+		
+		System.out.println("\n==== TEST 5: aluno update ====");
+		aluno = alunoDao.findById(1);
+		aluno.setNome("Martha Waine");
+		alunoDao.update(aluno);
+		System.out.println("Update completed!");
 	}
 
 }

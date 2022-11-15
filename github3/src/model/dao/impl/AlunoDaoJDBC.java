@@ -65,7 +65,28 @@ public class AlunoDaoJDBC implements AlunoDao {
 
 	@Override
 	public void update(Aluno aluno) {
-		// TODO Auto-generated method stub
+		PreparedStatement st = null;
+		try {
+			st = conn.prepareStatement(
+					"UPDATE aluno "
+					+ "SET nome = ?, email = ?, dataIngresso = ?, dataConclusao = ?, idCurso = ? "
+					+ "WHERE id = ?");
+			
+			st.setString(1, aluno.getNome());
+			st.setString(2, aluno.getEmail());
+			st.setDate(3, new java.sql.Date(aluno.getDataIngresso().getTime()));
+			st.setDate(4, new java.sql.Date(aluno.getDataConclusao().getTime()));
+			st.setInt(5, aluno.getCurso().getId());
+			st.setInt(6, aluno.getId());
+			
+			st.executeUpdate();
+		}
+		catch (SQLException e) {
+			throw new DbException(e.getMessage());
+		}
+		finally {
+			DB.closeStatement(st);
+		}
 		
 	}
 
