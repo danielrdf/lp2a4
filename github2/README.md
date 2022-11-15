@@ -1,5 +1,5 @@
 # github-2
 
-Exercício de CRUD MVC
+Exercício de CRUD JSP
 
 Tutorial de Kane Chan
