@@ -1,5 +1,6 @@
 package application;
 
+import java.util.Date;
 import java.util.List;
 
 import model.dao.AlunoDao;
@@ -29,6 +30,11 @@ public class Program {
 		for (Aluno aluno1 : list) {
 			System.out.println(aluno1);
 		}
+		
+		System.out.println("\n==== TEST 4: aluno insert ====");
+		Aluno novoAluno = new Aluno(null, "Greg", "greg@gmail.com", new Date(), new Date(), curso);
+		alunoDao.insert(novoAluno);
+		System.out.println("Inserted! New id = " + novoAluno.getId());
 	}
 
 }
