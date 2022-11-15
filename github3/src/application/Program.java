@@ -1,8 +1,11 @@
 package application;
 
+import java.util.List;
+
 import model.dao.AlunoDao;
 import model.dao.DaoFactory;
 import model.entities.Aluno;
+import model.entities.Curso;
 
 public class Program {
 
@@ -12,9 +15,14 @@ public class Program {
 		
 		System.out.println("=== TEST 1: aluno findById ===");
 		Aluno aluno = alunoDao.findById(3);
-		
 		System.out.println(aluno);
 		
+		System.out.println("\n=== TEST 2: aluno findByCurso ===");
+		Curso curso = new Curso(2, null);
+		List<Aluno> list = alunoDao.findByCurso(curso);
+		for (Aluno aluno1 : list) {
+			System.out.println(aluno1);
+		}
 	}
 
 }

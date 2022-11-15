@@ -5,7 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import db.DB;
 import db.DbException;
@@ -98,7 +100,7 @@ public class AlunoDaoJDBC implements AlunoDao {
 		ResultSet rs = null;
 		try {
 			st = conn.prepareStatement(
-					"SELECT aluno.*, curso.nome as 'Curso' "
+					"SELECT aluno.*, curso.nome as Curso "
 					+ "FROM aluno JOIN curso "
 					+ "ON aluno.idCurso = curso.id "
 					+ "WHERE idCurso = ? "
@@ -109,14 +111,21 @@ public class AlunoDaoJDBC implements AlunoDao {
 			rs = st.executeQuery();
 			
 			List<Aluno> list = new ArrayList<>();
+			Map<Integer, Curso> map = new HashMap<>();
 			
-			////////// VIDEO 283 MINUTO 6:00 /////////////////
 			while (rs.next()) {
-				Curso curso = instantiateCurso(rs);
-				Aluno aluno = instantiateAluno(rs, curso);
+				
+				Curso curso1 = map.get(rs.getInt("idCurso"));
+				
+				if (curso1 == null) {
+					curso1 = instantiateCurso(rs);
+					map.put(rs.getInt("idCurso"), curso1);
+				}
+				
+				Aluno aluno = instantiateAluno(rs, curso1);
 				list.add(aluno);
 			}
-			return null;
+			return list;
 		}
 		catch (SQLException e) {
 			throw new DbException(e.getMessage());
