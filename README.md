@@ -4,10 +4,10 @@ Disciplina de Linguagem de Programação II | IFSP
 
 Prof. Diego Caldas Chaves
 
-Exercicio 1: https://github.com/danielrdf/lp2a4/tree/main/github1
+Exercício de Thread: https://github.com/danielrdf/lp2a4/tree/main/github1
 
-Exercicio 2: https://github.com/danielrdf/lp2a4/tree/main/github2
+Exercício de CRUD JSP: https://github.com/danielrdf/lp2a4/tree/main/github2
 
-Exercicio 3: https://github.com/danielrdf/lp2a4/tree/main/github3
+Exercício de CRUD JDBC: https://github.com/danielrdf/lp2a4/tree/main/github3
 
-Exercicio 4: https://github.com/danielrdf/lp2a4/tree/main/github4
+Exercício de CRUD JPA: https://github.com/danielrdf/lp2a4/tree/main/github4
